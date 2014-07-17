@@ -13,15 +13,22 @@ Dependencies
 
 * TimeClock uses the [Poltergeist gem](https://github.com/teampoltergeist/poltergeist) for Capybara's JS driver. This gem requires PhantomJS version 1.8.1 or later. Refer to the documentation for installation if necessary.
 
-Using the Application
-=====================
+* If there's anything I missed that you had trouble installing, please let me know.
 
-You will have to seed the database in order to create the first administrator account. Run `rake db:seed` so that you can login with the below credentials:
+Database Setup
+--------------
+
+With MySQL up and running on your machine all you should need to do is run `rake db:create db:seed db:migrate`.
+
+Once that is set, you can log in with the below credentials:
 
 * Email: admin@email.com
 * Password: defaultpass
 
-Once you are logged in, you can create employee users as well as other administrators.
+After you are logged in, you can create employee users as well as other administrators with the application interface.
+
+Using the Application
+=====================
 
 Testing
 =======
