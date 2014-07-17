@@ -9,6 +9,8 @@ gem 'mysql2' # SQL DB
 gem 'unicorn' # Concurrent server
 
 gem 'bootstrap-sass' # Bootstrap
+gem 'autoprefixer-rails' # Automatic vendor prefixes
+gem 'momentjs-rails' # JS time and date formatter
 gem 'execjs' # Execute JS
 gem 'therubyracer' # V8 JS interpreter
 gem 'jquery-rails' # jQuery

@@ -1,0 +1,17 @@
+!!!
+%html.no-js{lang: "en"}
+  %head
+    %meta{"http-equiv" => 'Content-Type', content: 'text/html; charset=utf-8'}
+    / Google Font
+    / Modernizr
+    %script{src: "//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"}
+    / Bootstrap
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1.0"}
+    = stylesheet_link_tag '//cdnjs.cloudflare.com/ajax/libs/bootswatch/3.2.0+1/simplex/bootstrap.min.css'
+    / Title, Other JS and Stylesheet
+    %title= page_title
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    = yield
