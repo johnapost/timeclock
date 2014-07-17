@@ -1,0 +1,16 @@
+%nav.navbar.navbar-default{role: 'navigation'}
+  .navbar-header
+    %button.navbar-toggle{type: 'button', data: {toggle: 'collapse', target: '#main-nav'}}
+      %span.sr-only Toggle navigation
+      %span.icon-bar
+      %span.icon-bar
+      %span.icon-bar
+    = link_to 'TimeClock', root_path, class: 'navbar-brand'
+
+  .collapse.navbar-collapse#main-nav
+    %ul.nav.navbar-nav.pull-right
+      - if user_signed_in?
+        %li{class: params[:controller] == 'dashboard' ? 'active' : ''}= link_to 'Dashboard', dashboard_path
+        %li= link_to 'Sign Out', destroy_user_session_path, method: :delete, data: {'no-turbolink' => true}
+      - else
+        %li= link_to 'Sign In', new_user_session_path

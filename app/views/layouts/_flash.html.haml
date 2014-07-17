@@ -1,0 +1,5 @@
+- flash.each do |name, msg|
+  - if msg.is_a? String
+    .alert{class: "alert-#{name == 'notice' ? 'success' : 'danger'}"}
+      %a.close{data: {dismiss: 'alert'}} &times;
+      %div{id: "flash_#{name}"}= msg
