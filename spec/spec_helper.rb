@@ -79,3 +79,6 @@ RSpec.configure do |config|
   end
 =end
 end
+
+require 'capybara/poltergeist'
+Capybara.javascript_driver = :poltergeist
