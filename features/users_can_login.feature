@@ -10,7 +10,6 @@ Feature: Users can log in
     When I enter my admin credentials
     Then I should be successfully logged in
 
-  @wip
   Scenario: Admin cannot login with incorrect credentials
     Given I am at the login page
     When I enter the wrong admin credentials
@@ -21,7 +20,6 @@ Feature: Users can log in
     When I enter my employee credentials
     Then I should be successfully logged in
 
-  @wip
   Scenario: Employee cannot login with incorrect credentials
     Given I am at the login page
     When I enter the wrong employee credentials
