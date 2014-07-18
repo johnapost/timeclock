@@ -7,5 +7,7 @@
 
 - if @message[:type] == 'success'
   :plain
+    // Transition forms
+    $('.clock_in .time_log_id input').val('')
     $('.clock_out').velocity('transition.slideDownOut', 400);
     $('.clock_in').delay(400).velocity('transition.slideUpIn', 400);

@@ -11,7 +11,9 @@
       .panel-body= render 'time_logs/form'
     .panel.panel-primary.clock_out{style: @user.active_clock? ? 'display: block' : 'display: none'}
       .panel-heading Running Clock
-      .panel-body= render 'time_logs/clock_out'
+      .panel-body
+        - if @user.active_clock?
+          = render 'time_logs/clock_out'
   .col-sm-6
     .panel.panel-default
       .panel-heading Time Log History
