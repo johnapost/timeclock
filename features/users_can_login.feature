@@ -8,23 +8,21 @@ Feature: Users can log in
   Scenario: Admin can login
     Given I am at the login page
     When I enter my admin credentials
-    And I click Login
     Then I should be successfully logged in
 
+  @wip
   Scenario: Admin cannot login with incorrect credentials
     Given I am at the login page
     When I enter the wrong admin credentials
-    And I click Login
-    Then I should be successfully logged in
+    Then I should be refused access
 
   Scenario: Employee can login
     Given I am at the login page
     When I enter my employee credentials
-    And I click Login
-    Then I should be refused access
+    Then I should be successfully logged in
 
+  @wip
   Scenario: Employee cannot login with incorrect credentials
     Given I am at the login page
     When I enter the wrong employee credentials
-    And I click Login
     Then I should be refused access

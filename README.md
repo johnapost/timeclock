@@ -35,6 +35,8 @@ Testing
 
 Testing is handled with both RSpec and Cucumber. Please run `rspec` and `cucumber` to see the results.
 
+Testing inconsistencies may be caused [by the Rails Spring preloader](https://github.com/rails/spring). Try running `spring stop` before running the tests to close any preloaded processes.
+
 License
 =======
 

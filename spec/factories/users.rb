@@ -15,11 +15,27 @@
 #  last_sign_in_ip        :string(255)
 #  created_at             :datetime
 #  updated_at             :datetime
+#  role                   :integer          default(1), not null
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :user do
+  factory :employee, class: User do
+    @password = Faker::Internet.password 8
+
+    email Faker::Internet.email
+    password @password
+    password_confirmation @password
+    role :employee
+  end
+
+  factory :admin, class: User do
+    @password = Faker::Internet.password 8
+
+    email Faker::Internet.email
+    password @password
+    password_confirmation @password
+    role :admin
   end
 end

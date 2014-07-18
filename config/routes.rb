@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'dashboard#index'
+
+  devise_scope :user do
+    root 'devise/sessions#new'
+    get '/users/sign_out', to: 'devise/sessions#destroy'
+  end
+
+  get '/dashboard', to: 'dashboard#index'
 end
