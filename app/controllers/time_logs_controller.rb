@@ -20,6 +20,7 @@ class TimeLogsController < ApplicationController
 
   def update
     @time_log = TimeLog.find params[:id]
+    @time_log.clock_out = DateTime.now
 
     if @time_log.update_attributes time_log_params
       @message = {text: "Successfully clocked out at #{@time_log.clock_out}", type: 'success'}

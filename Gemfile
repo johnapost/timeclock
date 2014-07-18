@@ -17,7 +17,6 @@ gem 'jquery-rails' # jQuery
 gem 'jquery-ui-rails' # jQuery UI
 gem 'turbolinks' # Push state content
 gem 'simple_form' # Form generation
-gem 'nested_form' # Nested forms
 gem 'devise' # User modeling
 gem 'annotate' # Annotate models
 gem 'sass-rails' # SASS support

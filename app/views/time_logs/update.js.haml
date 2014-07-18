@@ -1,0 +1,11 @@
+:plain
+  // Alert
+  $('.ajax').removeClass('alert-success').removeClass('alert-danger')
+  $('.ajax').addClass('alert-#{@message[:type]}')
+  $('.alert-content').html('#{@message[:text]}')
+  $('.ajax').velocity('transition.slideDownIn', 400);
+
+- if @message[:type] == 'success'
+  :plain
+    $('.clock_out').velocity('transition.slideDownOut', 400);
+    $('.clock_in').delay(400).velocity('transition.slideUpIn', 400);
