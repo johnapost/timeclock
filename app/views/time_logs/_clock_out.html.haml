@@ -1,5 +1,5 @@
 = simple_form_for @user.time_logs.first, url: time_log_path(@user.time_logs.first), remote: true, defaults: {label: false, input_html: {class: 'form-control bottom-10px'}} do |f|
   .form-inputs
-    .elapsed-time This is where the elapsed time will be
+    .elapsed-time 00:00:00
     = f.input :id, required: true, as: :hidden
   .form-actions.top-20px= f.submit 'Clock out', class: 'btn btn-primary btn-md'

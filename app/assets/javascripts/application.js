@@ -16,5 +16,6 @@
 //= require velocity.ui
 //= require bootstrap
 //= require turbolinks
+//= require moment
 //= require effects
 //= require_tree .

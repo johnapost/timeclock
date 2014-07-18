@@ -19,7 +19,7 @@
     string +=   "</div>"
     string +=   "<div class='form-inputs'>"
     string +=     "<div class='elapsed-time'>"
-    string +=       "This is where the elapsed time will be."
+    string +=       "00:00:00"
     string +=     "</div>"
     string +=     "<div class='input hidden time_log_id'>"
     string +=       "<input aria-required='true' class='hidden form-control bottom-10px' id='time_log_id' name='time_log[id]' required='required' type='hidden' value= '#{@time_log.id}'>"
@@ -30,3 +30,8 @@
     string +=   "</div>"
     string += "</form>"
     $('.clock_out .panel-body').html(string)
+    clearInterval(timer)
+    var elapsed = 0
+    var timer = setInterval(function() {
+      $('.elapsed-time').html(moment().hours(0).minutes(0).seconds(elapsed++).format('HH:mm:ss'))
+    }, 1000)
