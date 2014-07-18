@@ -16,6 +16,14 @@ class TimeLog < ActiveRecord::Base
   default_scope {order(clock_in: :desc)}
 
   def duration
-    self.clock_out - self.clock_in if self.clock_out
+    Time.at(self.clock_out - self.clock_in).utc.strftime('%H:%M:%S') if self.clock_out && self.clock_in
+  end
+
+  def display_clock_in
+    self.clock_in.strftime('%m/%d/%Y - %l:%M %p')
+  end
+
+  def display_clock_out
+    self.clock_in.strftime('%m/%d/%Y - %l:%M %p')
   end
 end

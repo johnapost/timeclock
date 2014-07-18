@@ -18,7 +18,7 @@
     .panel.panel-default
       .panel-heading Time Log History
       .panel-body
-        %table.table.table-striped.table-bordered.table-responsive
+        %table.table.table-striped.table-responsive
           %tr
             %td ID
             %td Clock In
@@ -27,6 +27,6 @@
           - @time_logs.each do |time_log|
             %tr
               %td= time_log.id
-              %td= display_datetime time_log.clock_in
-              %td= display_datetime time_log.clock_out
-              %td= display_duration time_log.duration
+              %td= time_log.display_clock_in
+              %td= time_log.display_clock_out
+              %td= time_log.duration
