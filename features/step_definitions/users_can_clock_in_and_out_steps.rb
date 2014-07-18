@@ -45,10 +45,16 @@ Then(/^the timer should start running$/) do
   page.should have_content "Successfully clocked in at #{Time.now}."
   page.should_not have_content 'New Time Log'
   page.should have_content 'Running Clock'
+
+  TimeLog.first.clock_out.should == nil
 end
 
 Then(/^the timer should stop running$/) do
-  pending
+  page.should have_content "Successfully clocked out at #{Time.now}."
+  page.should have_content 'New Time Log'
+  page.should_not have_content 'Running Clock'
+
+  TimeLog.first.clock_out.should_not == nil
 end
 
 Then(/^display how long I was clocked in$/) do

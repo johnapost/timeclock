@@ -27,13 +27,13 @@ Feature: Users can clock in and out
     When I clock in with an existing ID
     Then I should get a duplicate ID warning
 
-  @wip
+  @javascript
   Scenario: Admin can clock in
     Given I am logged in as an admin
     When I clock in
     Then the timer should start running
 
-  @wip
+  @javascript
   Scenario: Admin can clock out
     Given I am clocked in as an admin
     And I am logged in as an admin
