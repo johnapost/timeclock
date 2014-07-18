@@ -15,6 +15,8 @@ class TimeLog < ActiveRecord::Base
 
   default_scope {order(clock_in: :desc)}
 
+  validate :user_id, :clock_in, presence: true
+
   def display_duration
     Time.at(self.clock_out - self.clock_in).utc.strftime('%H:%M:%S') if self.clock_out && self.clock_in
   end
