@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   end
 
   get '/dashboard', to: 'dashboard#index'
+
+  resources :time_logs, only: [:create, :update]
 end
