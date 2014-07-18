@@ -30,7 +30,7 @@
     window.string +=   "</div>"
     window.string += "</form>"
     $('.clock_out .panel-body').html(window.string)
-    clearInterval(timer)
+    clearInterval(window.timer)
     window.elapsed = 0
     $('.elapsed-time').html(moment().hours(0).minutes(0).seconds(elapsed).format('HH:mm:ss'))
     window.timer = setInterval(function() {

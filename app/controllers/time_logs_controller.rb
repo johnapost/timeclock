@@ -3,8 +3,6 @@ class TimeLogsController < ApplicationController
 
   respond_to :js
 
-  include DashboardHelper
-
   def create
     @time_log = TimeLog.new time_log_params
     @time_log.clock_in = DateTime.now
@@ -13,7 +11,7 @@ class TimeLogsController < ApplicationController
       @message = {text: 'That ID already exists. Please try a different one.', type: 'danger'}
     else
       if @time_log.save
-        @message = {text: "Successfully clocked in at #{display_datetime @time_log.clock_in}.", type: 'success'}
+        @message = {text: "Successfully clocked in at #{@time_log.display_clock_in}.", type: 'success'}
       else
         @message = {text: 'Unable to clock in.', type: 'danger'}
       end
@@ -25,7 +23,7 @@ class TimeLogsController < ApplicationController
     @time_log.clock_out = DateTime.now
 
     if @time_log.update_attributes time_log_params
-      @message = {text: "Successfully clocked out at #{display_datetime @time_log.clock_out} with a duration of #{display_duration @time_log.duration}", type: 'success'}
+      @message = {text: "Successfully clocked out at #{@time_log.display_clock_out} with a duration of #{@time_log.display_duration}", type: 'success'}
     else
       @message = {text: 'Unable to clock out.', type: 'danger'}
     end

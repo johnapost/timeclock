@@ -15,9 +15,9 @@
     window.string = ''
     window.string += "<tr class='inserted'>"
     window.string +=   "<td>#{@time_log.id}</td>"
-    window.string +=   "<td>#{display_datetime @time_log.clock_in}</td>"
-    window.string +=   "<td>#{display_datetime @time_log.clock_out}</td>"
-    window.string +=   "<td>#{display_duration @time_log.duration}</td>"
+    window.string +=   "<td>#{@time_log.display_clock_in}</td>"
+    window.string +=   "<td>#{@time_log.display_clock_out}</td>"
+    window.string +=   "<td>#{@time_log.display_duration}</td>"
     window.string += "</tr>"
     $(window.string).insertAfter($('table tr:first'))
     $('.inserted:first').velocity('transition.slideDownIn', 400)

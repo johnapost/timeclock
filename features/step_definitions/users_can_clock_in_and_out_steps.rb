@@ -11,10 +11,10 @@ Given(/^I am logged in as an (\w+)$/) do |role|
 end
 
 Given(/^I am clocked in as an (\w+)$/) do |role|
-  TimeLog.create(
-    id: 1,
-    user_id: eval("@#{role}.id"),
-  )
+  @time_log = FactoryGirl.create :time_log
+  @time_log.user_id = eval("@#{role}.id")
+  @time_log.clock_out = nil
+  @time_log.save!
 end
 
 Given(/^there is an existing time log$/) do
@@ -42,13 +42,13 @@ When(/^I clock in$/) do
 end
 
 Then(/^the timer should start running$/) do
-  page.should have_content "Successfully clocked in at"
+  page.should have_content "Successfully clocked in"
   page.should_not have_content 'New Time Log'
   page.should have_content 'Running Clock'
 end
 
 Then(/^the timer should stop running$/) do
-  page.should have_content "Successfully clocked out at"
+  page.should have_content "Successfully clocked out"
   page.should have_content 'New Time Log'
   page.should_not have_content 'Running Clock'
 end
