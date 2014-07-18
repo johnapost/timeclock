@@ -1,2 +1,5 @@
-$('.alert-content').html('#{@alert}')
-$('.alert').velocity('transition.slideDownIn', 400);
+:plain
+  $('.ajax').removeClass('alert-success').removeClass('alert-danger')
+  $('.ajax').addClass('alert-#{@message[:type]}')
+  $('.alert-content').html('#{@message[:text]}')
+  $('.ajax').velocity('transition.slideDownIn', 400);

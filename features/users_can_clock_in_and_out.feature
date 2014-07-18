@@ -20,6 +20,13 @@ Feature: Users can clock in and out
     Then the timer should stop running
     And display how long I was clocked in
 
+  @javascript
+  Scenario: Employee enters an ID already in use
+    Given there is an existing time log
+    And I am logged in as an employee
+    When I clock in with an existing ID
+    Then I should get a duplicate ID warning
+
   @wip
   Scenario: Admin can clock in
     Given I am logged in as an admin
@@ -33,3 +40,10 @@ Feature: Users can clock in and out
     When I clock out
     Then the timer should stop running
     And display how long I was clocked in
+
+  @javascript
+  Scenario: Admin enters an ID already in use
+    Given there is an existing time log
+    And I am logged in as an admin
+    When I clock in with an existing ID
+    Then I should get a duplicate ID warning

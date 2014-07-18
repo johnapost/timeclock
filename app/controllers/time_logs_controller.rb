@@ -7,10 +7,14 @@ class TimeLogsController < ApplicationController
     @time_log = TimeLog.new time_log_params
     @time_log.clock_in = DateTime.now
 
-    if @time_log.save
-      @alert = "Successfully clocked in at #{@time_log.clock_in}"
+    if TimeLog.where(id: @time_log.id).any?
+      @message = {text: 'That ID already exists. Please try a different one.', type: 'danger'}
     else
-      @alert = 'Unable to clock in.'
+      if @time_log.save
+        @message = {text: "Successfully clocked in at #{@time_log.clock_in}.", type: 'success'}
+      else
+        @message = {text: 'Unable to clock in.', type: 'danger'}
+      end
     end
   end
 
@@ -18,9 +22,9 @@ class TimeLogsController < ApplicationController
     @time_log = TimeLog.find params[:id]
 
     if @time_log.update_attributes time_log_params
-      @alert = "Successfully clocked out at #{@time_log.clock_out}"
+      @message = {text: "Successfully clocked out at #{@time_log.clock_out}", type: 'success'}
     else
-      @alert = 'Unable to clock out.'
+      @message = {text: 'Unable to clock out.', type: 'danger'}
     end
   end
 

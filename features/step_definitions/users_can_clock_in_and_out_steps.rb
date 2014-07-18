@@ -11,12 +11,21 @@ Given(/^I am logged in as an (\w+)$/) do |role|
 end
 
 Given(/^I am clocked in as an (\w+)$/) do |role|
-  @clocked_in_time = DateTime.parse((Time.now - 1.hour.ago).to_s)
-
   TimeLog.create(
+    id: 1,
     user_id: eval("@#{role}.id"),
-    clock_in: @clocked_in_time
   )
+end
+
+Given(/^there is an existing time log$/) do
+  @time_log = FactoryGirl.create :time_log
+end
+
+When(/^I clock in with an existing ID$/) do
+  within ('form') do
+    fill_in 'time_log_id', with: @time_log.id
+    click_button 'Clock in'
+  end
 end
 
 When(/^I clock out$/) do
@@ -31,7 +40,7 @@ When(/^I clock in$/) do
 end
 
 Then(/^the timer should start running$/) do
-  page.should have_content "Clocked in at #{Time.now}."
+  page.should have_content "Successfully clocked in at #{Time.now}."
   page.should have_content 'Clock out'
 end
 
@@ -41,4 +50,8 @@ end
 
 Then(/^display how long I was clocked in$/) do
   pending
+end
+
+Then(/^I should get a duplicate ID warning$/) do
+  page.should have_content 'That ID already exists. Please try a different one.'
 end
