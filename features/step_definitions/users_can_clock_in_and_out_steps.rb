@@ -54,7 +54,7 @@ Then(/^the timer should stop running$/) do
 end
 
 Then(/^display how long I was clocked in$/) do
-  pending
+  page.should have_content @time_log.display_duration
 end
 
 Then(/^I should get a duplicate ID warning$/) do
