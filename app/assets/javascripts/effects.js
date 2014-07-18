@@ -18,6 +18,15 @@
     $('.ajax .close').click(function() {
       $('.ajax').velocity('transition.slideUpOut', 400);
     })
+
+    if ($('.clock_out:visible').length > 0) {
+      clearInterval(window.timer)
+      window.elapsed = $('.elapsed-time').data('elapsed')
+      $('.elapsed-time').html(moment().hours(0).minutes(0).seconds(elapsed).format('HH:mm:ss'))
+      window.timer = setInterval(function() {
+        $('.elapsed-time').html(moment().hours(0).minutes(0).seconds(elapsed++).format('HH:mm:ss'))
+      }, 1000)
+    }
   };
 
   $(document).ready(function(){

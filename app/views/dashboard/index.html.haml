@@ -27,6 +27,6 @@
           - @time_logs.each do |time_log|
             %tr
               %td= time_log.id
-              %td= time_log.display_clock_in
-              %td= time_log.display_clock_out
-              %td= time_log.duration
+              %td= display_datetime time_log.clock_in
+              %td= display_datetime time_log.clock_out
+              %td= display_duration time_log.duration

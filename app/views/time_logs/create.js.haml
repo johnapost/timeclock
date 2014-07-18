@@ -12,26 +12,27 @@
     $('.clock_out').delay(400).velocity('transition.slideUpIn', 400);
 
     // Build clock out form
-    string =  ''
-    string += "<form action='/time_logs/#{@time_log.id}' class='edit_time_log' data-remote='true' id='edit_time_log_#{@time_log.id}' method='post'>"
-    string +=   "<div style='display:none'>"
-    string +=     "<input name='_method' type='hidden' value='patch'>"
-    string +=   "</div>"
-    string +=   "<div class='form-inputs'>"
-    string +=     "<div class='elapsed-time'>"
-    string +=       "00:00:00"
-    string +=     "</div>"
-    string +=     "<div class='input hidden time_log_id'>"
-    string +=       "<input aria-required='true' class='hidden form-control bottom-10px' id='time_log_id' name='time_log[id]' required='required' type='hidden' value= '#{@time_log.id}'>"
-    string +=     "</div>"
-    string +=   "</div>"
-    string +=   "<div class='form-actions top-20px'>"
-    string +=   "<input class='btn btn-primary btn-md' name='commit' type='submit' value='Clock out'>"
-    string +=   "</div>"
-    string += "</form>"
-    $('.clock_out .panel-body').html(string)
+    window.string = ''
+    window.string += "<form action='/time_logs/#{@time_log.id}' class='edit_time_log' data-remote='true' id='edit_time_log_#{@time_log.id}' method='post'>"
+    window.string +=   "<div style='display:none'>"
+    window.string +=     "<input name='_method' type='hidden' value='patch'>"
+    window.string +=   "</div>"
+    window.string +=   "<div class='form-inputs'>"
+    window.string +=     "<div class='elapsed-time'>"
+    window.string +=       "00:00:00"
+    window.string +=     "</div>"
+    window.string +=     "<div class='input hidden time_log_id'>"
+    window.string +=       "<input aria-required='true' class='hidden form-control bottom-10px' id='time_log_id' name='time_log[id]' required='required' type='hidden' value= '#{@time_log.id}'>"
+    window.string +=     "</div>"
+    window.string +=   "</div>"
+    window.string +=   "<div class='form-actions top-20px'>"
+    window.string +=   "<input class='btn btn-primary btn-md' name='commit' type='submit' value='Clock out'>"
+    window.string +=   "</div>"
+    window.string += "</form>"
+    $('.clock_out .panel-body').html(window.string)
     clearInterval(timer)
-    var elapsed = 0
-    var timer = setInterval(function() {
+    window.elapsed = 0
+    $('.elapsed-time').html(moment().hours(0).minutes(0).seconds(elapsed).format('HH:mm:ss'))
+    window.timer = setInterval(function() {
       $('.elapsed-time').html(moment().hours(0).minutes(0).seconds(elapsed++).format('HH:mm:ss'))
     }, 1000)

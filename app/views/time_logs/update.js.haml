@@ -11,13 +11,13 @@
     $('.clock_in .time_log_id input').val('')
     $('.clock_out').velocity('transition.slideDownOut', 400);
     $('.clock_in').delay(400).velocity('transition.slideUpIn', 400);
-    clearInterval(timer)
-    string =  ''
-    string += "<tr class='inserted'>"
-    string +=   "<td>#{@time_log.id}</td>"
-    string +=   "<td>#{@time_log.display_clock_in}</td>"
-    string +=   "<td>#{@time_log.display_clock_out}</td>"
-    string +=   "<td>#{@time_log.duration}</td>"
-    string += "</tr>"
-    $(string).insertAfter($('table tr:first'))
+    clearInterval(window.timer)
+    window.string = ''
+    window.string += "<tr class='inserted'>"
+    window.string +=   "<td>#{@time_log.id}</td>"
+    window.string +=   "<td>#{display_datetime @time_log.clock_in}</td>"
+    window.string +=   "<td>#{display_datetime @time_log.clock_out}</td>"
+    window.string +=   "<td>#{display_duration @time_log.duration}</td>"
+    window.string += "</tr>"
+    $(window.string).insertAfter($('table tr:first'))
     $('.inserted:first').velocity('transition.slideDownIn', 400)
