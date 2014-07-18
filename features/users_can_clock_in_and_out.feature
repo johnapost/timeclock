@@ -6,13 +6,11 @@ Feature: Users can clock in and out
   Background:
     Given there are admin and employee accounts
 
-  @wip
   Scenario: Employee can clock in
     Given I am logged in as an employee
     When I clock in
     Then the timer should start running
 
-  @wip
   Scenario: Employee can clock out
     Given I am clocked in as an employee
     And I am logged in as an employee
