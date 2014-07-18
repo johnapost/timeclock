@@ -1,9 +1,18 @@
+.alert.ajax{role: 'alert'}
+  .alert-content
+  %button.close{type: 'button', data: {dismiss: 'alert'}}
+    %span{aria: {hidden: 'true'}} &times;
+    %span.sr-only Close
+
 .row
   .col-sm-6
     .panel.panel-primary
       .panel-heading New Time Log
       .panel-body
+        = render 'time_logs/form'
   .col-sm-6
     .panel.panel-default
       .panel-heading Time Log History
       .panel-body
+        - @time_logs.each do |time_log|
+          = time_log

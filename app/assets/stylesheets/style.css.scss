@@ -80,3 +80,8 @@ $lg: 1200px;
 .auto { margin: auto; }
 
 .scroll-y { overflow-y: scroll; }
+
+// Alerts
+.alert.ajax {
+  display: none;
+}

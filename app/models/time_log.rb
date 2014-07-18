@@ -12,4 +12,6 @@
 
 class TimeLog < ActiveRecord::Base
   belongs_to :user
+
+  default_scope {order(clock_in: :desc)}
 end
