@@ -85,3 +85,13 @@ $lg: 1200px;
 .alert.ajax {
   display: none;
 }
+
+// Form
+.clock_out {
+  display: none;
+}
+
+// Firefox Responsive Table
+@-moz-document url-prefix() {
+  fieldset { display: table-cell; }
+}

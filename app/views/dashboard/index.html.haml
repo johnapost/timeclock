@@ -6,13 +6,23 @@
 
 .row
   .col-sm-6
-    .panel.panel-primary
+    .panel.panel-primary.clock_in
       .panel-heading New Time Log
-      .panel-body
-        = render 'time_logs/form'
+      .panel-body= render 'time_logs/form'
+    .panel.panel-primary.clock_out
+      .panel-heading Running Clock
+      .panel-body= render 'time_logs/clock_out'
   .col-sm-6
     .panel.panel-default
       .panel-heading Time Log History
       .panel-body
-        - @time_logs.each do |time_log|
-          = time_log
+        %table.table.table-striped.table-bordered.table-responsive
+          %tr
+            %td ID
+            %td Clock In
+            %td Clock Out
+          - @time_logs.each do |time_log|
+            %tr
+              %td= time_log.id
+              %td= time_log.clock_in
+              %td= time_log.clock_out

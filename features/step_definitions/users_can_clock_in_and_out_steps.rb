@@ -22,18 +22,20 @@ Given(/^there is an existing time log$/) do
 end
 
 When(/^I clock in with an existing ID$/) do
-  within ('form') do
+  within ('.clock_in') do
     fill_in 'time_log_id', with: @time_log.id
     click_button 'Clock in'
   end
 end
 
 When(/^I clock out$/) do
-  click_button 'Clock out'
+  within ('.clock_out') do
+    click_button 'Clock out'
+  end
 end
 
 When(/^I clock in$/) do
-  within ('form') do
+  within ('.clock_in') do
     fill_in 'time_log_id', with: SecureRandom.random_number(600)
     click_button 'Clock in'
   end
@@ -41,7 +43,8 @@ end
 
 Then(/^the timer should start running$/) do
   page.should have_content "Successfully clocked in at #{Time.now}."
-  page.should have_content 'Clock out'
+  page.should_not have_content 'New Time Log'
+  page.should have_content 'Running Clock'
 end
 
 Then(/^the timer should stop running$/) do
