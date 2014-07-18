@@ -14,4 +14,8 @@ class TimeLog < ActiveRecord::Base
   belongs_to :user
 
   default_scope {order(clock_in: :desc)}
+
+  def duration
+    self.clock_out - self.clock_in if self.clock_out
+  end
 end
