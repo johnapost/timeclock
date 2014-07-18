@@ -24,4 +24,8 @@ class User < ActiveRecord::Base
   has_many :time_logs
 
   enum role: {admin: 0, employee: 1} unless instance_methods.include? :role
+
+  def active_clock?
+    self.time_logs.where(clock_out: nil).any?
+  end
 end

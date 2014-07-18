@@ -6,10 +6,10 @@
 
 .row
   .col-sm-6
-    .panel.panel-primary.clock_in
+    .panel.panel-primary.clock_in{style: @user.active_clock? ? 'display: none' : 'display: block'}
       .panel-heading New Time Log
       .panel-body= render 'time_logs/form'
-    .panel.panel-primary.clock_out
+    .panel.panel-primary.clock_out{style: @user.active_clock? ? 'display: block' : 'display: none'}
       .panel-heading Running Clock
       .panel-body= render 'time_logs/clock_out'
   .col-sm-6
