@@ -7,6 +7,12 @@ Rails.application.routes.draw do
   end
 
   get '/dashboard', to: 'dashboard#index'
+  get 'pdf/:id', to: 'pdfs#show', as: :pdf
 
   resources :time_logs, only: [:create, :update]
+
+  resources :users, only: [:index, :update] do
+    delete '', to: 'users#destroy', as: :destroy, on: :member
+    post '', to: 'users#create', as: :create, on: :collection
+  end
 end

@@ -36,7 +36,7 @@ end
 
 When(/^I clock in$/) do
   within ('.clock_in') do
-    fill_in 'time_log_id', with: SecureRandom.random_number(600)
+    fill_in 'time_log_id', with: rand(200..600)
     click_button 'Clock in'
   end
 end

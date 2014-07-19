@@ -33,6 +33,7 @@ $lg: 1200px;
 .top-30px { margin-top: 30px; }
 
 .left-0 { margin-left: 0; }
+.left-4px { margin-left: 4px; }
 .left-5px { margin-left: 5px; }
 .left-10px { margin-left: 10px; }
 .left-15px { margin-left: 15px; }
@@ -81,6 +82,22 @@ $lg: 1200px;
 
 .scroll-y { overflow-y: scroll; }
 
+// Overrides
+.panel-heading {
+  font-weight: bold;
+}
+
+.table {
+  margin-bottom: 0;
+}
+
+// Forms
+.capitalize {
+  input, select {
+    text-transform: capitalize;
+  }
+}
+
 // Alerts
 .alert.ajax {
   display: none;
@@ -89,6 +106,13 @@ $lg: 1200px;
 // Table
 tr.inserted {
   display: none;
+}
+
+.employee-history {
+  display: none;
+  &.display {
+    display: block;
+  }
 }
 
 // Firefox Responsive Table

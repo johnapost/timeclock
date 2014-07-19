@@ -1,0 +1,30 @@
+.alert.ajax{role: 'alert'}
+  %span.alert-content
+  %button.close{type: 'button'}
+    %span{aria: {hidden: 'true'}} &times;
+    %span.sr-only Close
+
+.new-user-form= render 'form'
+
+.panel.panel-info
+  .panel-heading.text-center Users
+  .panel-body.padding-0
+    %table.users.table.table-striped.table-responsive
+      %tr
+        %th ID
+        %th Name
+        %th Email
+        %th Status
+        %th 7 Day Total
+        %th Actions
+      - @users.each do |user|
+        %tr{class: "user_#{user.id}"}
+          %td= user.id
+          %td= user.display_name
+          %td= user.email
+          %td= user.status
+          %td= total_duration user.time_logs.seven_days
+          %td
+            - unless user == @user
+              = link_to 'Delete User', destroy_user_path(user.id), data: {confirm: 'Are you sure?'}, remote: true, method: :delete, class: 'btn btn-xs btn-danger'
+            = link_to 'Report', pdf_path(user.id, format: :pdf), target: '_blank', class: 'btn btn-xs btn-info'

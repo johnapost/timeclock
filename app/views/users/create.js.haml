@@ -1,0 +1,31 @@
+- if @message[:type] == 'success'
+  :plain
+    window.string = ''
+    window.string += "<tr class='inserted user_#{@new_user.id}'>"
+    window.string +=   "<td>#{@new_user.id}</td>"
+    window.string +=   "<td>#{@new_user.display_name}</td>"
+    window.string +=   "<td>#{@new_user.email}</td>"
+    window.string +=   "<td>#{@new_user.status}</td>"
+    window.string +=   "<td>#{total_duration @new_user.time_logs.seven_days}</td>"
+    window.string +=   "<td>"
+    window.string +=     "<a class='btn btn-xs btn-danger' data-confirm='Are you sure?' data-method='delete' data-remote='true' href='/users/#{@new_user.id}' rel='nofollow'>Delete User</a>"
+    window.string +=     "<a class='btn btn-xs btn-info left-4px' href='/pdf/#{@new_user.id}.pdf' target='_blank'>Report</a>"
+    window.string +=   "</td>"
+    window.string += "</tr>"
+    $(window.string).insertAfter($('.users tr:last'))
+    $('.inserted:last').velocity('transition.slideUpIn', 400)
+    $('.form-inputs input').val('')
+- else
+  :plain
+    $('.new-user-form').html("#{escape_javascript(render 'users/form')}")
+
+:plain
+  // Alert
+  $('.ajax').removeClass('alert-success').removeClass('alert-danger')
+  $('.ajax').addClass('alert-#{@message[:type]}')
+  $('.alert-content').html('#{@message[:text]}')
+  $('.ajax').velocity('transition.slideDownIn', 400);
+
+  $('.ajax .close').click(function() {
+    $('.ajax').velocity('transition.slideUpOut', 400);
+  })

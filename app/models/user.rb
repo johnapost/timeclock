@@ -16,16 +16,28 @@
 #  created_at             :datetime
 #  updated_at             :datetime
 #  role                   :integer          default(1), not null
+#  last_name              :string(255)
+#  first_name             :string(255)
 #
 
 class User < ActiveRecord::Base
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
+  devise :database_authenticatable, :trackable, :validatable
 
-  has_many :time_logs
+  default_scope {order(id: :asc)}
+
+  has_many :time_logs, dependent: :destroy
 
   enum role: {admin: 0, employee: 1} unless instance_methods.include? :role
 
   def active_clock?
     self.time_logs.where(clock_out: nil).any?
+  end
+
+  def display_name
+    "#{self.first_name} #{self.last_name}"
+  end
+
+  def status
+    self.active_clock? ? 'Clocked In' : 'Clocked Out'
   end
 end

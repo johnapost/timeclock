@@ -1,0 +1,21 @@
+.employee-history{class: @user.active_clock? ? 'display' : ''}
+  - @employees.each_slice(2).each do |slice|
+    .row
+      - slice.each do |employee|
+        .col-sm-6
+          .panel.panel-default
+            .panel-heading.text-center= employee.display_name
+            .panel-body.padding-0
+              %table.table.table-striped.table-responsive
+                %tr
+                  %th ID
+                  %th Clock In
+                  %th Clock Out
+                  %th Duration
+                - employee.time_logs.each do |time_log|
+                  %tr
+                    %td= time_log.id
+                    %td= time_log.display_clock_in
+                    %td= time_log.display_clock_out
+                    %td= time_log.display_duration
+            .panel-footer.text-center 7 Day Total: #{total_duration employee.time_logs.seven_days}

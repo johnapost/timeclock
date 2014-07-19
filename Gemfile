@@ -48,6 +48,7 @@ group :test do
   gem 'guard-cucumber' # Run features on save
   gem 'guard-rspec' # Run specs on save
   gem 'rb-fsevent' # Detect file changes
+  gem 'pdf-reader' # Convert PDFs to be readable by Poltergeist
 end
 
 group :doc do

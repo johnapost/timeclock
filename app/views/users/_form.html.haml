@@ -1,0 +1,17 @@
+= simple_form_for @new_user, validate: true, url: create_users_path, remote: true, defaults: {label: false, input_html: {class: 'form-control bottom-10px'}} do |f|
+  .panel.panel-primary
+    .panel-heading.text-center Create New User
+    .panel-body
+      .form-inputs
+        .row
+          .col-sm-6= f.input :id, placeholder: 'ID'
+          .col-sm-6.capitalize= f.input :role, collection: [:admin, :employee], include_blank: false
+        .row.top-10px
+          .col-xs-12= f.input :email, placeholder: 'Email'
+        .row.top-10px
+          .col-sm-6= f.input :first_name, placeholder: 'First Name'
+          .col-sm-6= f.input :last_name, placeholder: 'Last Name'
+        .row.top-10px
+          .col-sm-6= f.input :password, placeholder: 'Password'
+          .col-sm-6= f.input :password_confirmation, placeholder: 'Confirm Password'
+    .panel-footer= f.submit 'Save', class: 'btn btn-primary btn-md'
