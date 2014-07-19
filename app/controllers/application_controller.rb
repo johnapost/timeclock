@@ -14,4 +14,8 @@ class ApplicationController < ActionController::Base
     def get_user
       @user = current_user if user_signed_in?
     end
+
+    def block_employee
+      redirect_to dashboard_path, alert: 'You do not have sufficient access.' if @user.role == 'employee'
+    end
 end

@@ -32,4 +32,4 @@
               %td= time_log.display_duration
       .panel-footer.text-center 7 Day Total: #{total_duration @time_logs}
 
-= render 'users/index' if @user.admin?
+= render 'users/employee_history' if @user.admin?
