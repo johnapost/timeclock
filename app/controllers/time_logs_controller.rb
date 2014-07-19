@@ -23,7 +23,7 @@ class TimeLogsController < ApplicationController
     @time_log.clock_out = DateTime.now
 
     if @time_log.update_attributes time_log_params
-      @message = {text: "Successfully clocked out at #{@time_log.display_clock_out} with a duration of #{@time_log.display_duration}", type: 'success'}
+      @message = {text: "Successfully clocked out at #{@time_log.display_clock_out} with a duration of #{@time_log.display_duration}.", type: 'success'}
     else
       @message = {text: 'Unable to clock out.', type: 'danger'}
     end

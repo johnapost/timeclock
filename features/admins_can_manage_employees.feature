@@ -7,6 +7,20 @@ Feature: Admins can manage employees
     And the employee has time logs
 
   @javascript
+  Scenario: Admin creates a new employee
+    Given I am logged in as an admin
+    And I visit the users page
+    When I create an employee
+    Then I should see that employee
+
+  @javascript
+  Scenario: Admin deletes an employee
+    Given I am logged in as an admin
+    And I visit the users page
+    When I delete an employee
+    Then I should not see that employee anymore
+
+  @javascript
   Scenario: Admin cannot view employee time logs when not clocked in
     Given I am logged in as an admin
     Then I should not see employee time logs

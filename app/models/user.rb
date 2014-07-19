@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
 
   default_scope {order(id: :asc)}
 
-  has_many :time_logs
+  has_many :time_logs, dependent: :destroy
 
   enum role: {admin: 0, employee: 1} unless instance_methods.include? :role
 

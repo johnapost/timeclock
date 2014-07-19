@@ -6,6 +6,10 @@ Given(/^the employee has time logs$/) do
   end
 end
 
+When(/^I delete an employee$/) do
+  click_link 'Delete User'
+end
+
 Then(/^I should see employee time logs$/) do
   page.should have_content @employee.email
   (0..2).each do |index|
@@ -18,4 +22,8 @@ Then(/^I should not see employee time logs$/) do
   (0..2).each do |index|
     page.should_not have_content @employee.time_logs[index].display_duration
   end
+end
+
+Then(/^I should not see that employee anymore$/) do
+  page.should_not have_content @employee.email
 end

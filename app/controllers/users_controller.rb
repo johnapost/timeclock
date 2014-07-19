@@ -4,4 +4,18 @@ class UsersController < ApplicationController
   def index
     @users = User.all
   end
+
+  def destroy
+    @user = User.find params[:id]
+
+    respond_to do |format|
+      format.js do
+        if @user.destroy
+          @message = {text: "Successfully deleted #{@user.email}.", type: 'success'}
+        else
+          @message = {text: "Unable to delete #{@user.email}.", type: 'danger'}
+        end
+      end
+    end
+  end
 end
