@@ -16,7 +16,8 @@
           = render 'time_logs/clock_out'
   .col-sm-6
     .panel.panel-default
-      .panel-heading.text-center Time Log History
+      .panel-heading.text-center
+        Time Log History
       .panel-body.padding-0
         %table.own-history.table.table-striped.table-responsive
           %tr
@@ -30,6 +31,9 @@
               %td= time_log.display_clock_in
               %td= time_log.display_clock_out
               %td= time_log.display_duration
-      .panel-footer.text-center 7 Day Total: #{total_duration @time_logs}
+      .panel-footer.text-center
+        7 Day Total: #{total_duration @time_logs}
+        .row.top-10px
+          .col-sm-4.col-sm-push-4= link_to 'Report', pdf_path(@user.id, format: :pdf), target: '_blank', class: 'btn btn-sm btn-info btn-block'
 
 = render 'users/employee_history' if @user.admin?
