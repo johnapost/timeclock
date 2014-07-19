@@ -1,4 +1,4 @@
-.employee-history
+.employee-history{class: @user.active_clock? ? 'display' : ''}
   - @employees.each_slice(2).each do |slice|
     .row
       - slice.each do |employee|

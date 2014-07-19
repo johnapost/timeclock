@@ -93,6 +93,9 @@ tr.inserted {
 
 .employee-history {
   display: none;
+  &.display {
+    display: block;
+  }
 }
 
 // Firefox Responsive Table
