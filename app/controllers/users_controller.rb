@@ -15,9 +15,9 @@ class UsersController < ApplicationController
           @message = {text: 'That ID already exists. Please try a different one.', type: 'danger'}
         else
           if @new_user.save
-            @message = {text: "Successfully created #{@user.display_name}.", type: 'success'}
+            @message = {text: "Successfully created #{@new_user.display_name}.", type: 'success'}
           else
-            @message = {text: "Unable to create #{@user.display_name}", type: 'danger'}
+            @message = {text: "Unable to create #{@new_user.display_name}", type: 'danger'}
             puts @new_user.errors.full_messages
           end
         end

@@ -13,6 +13,7 @@
     window.timer = setInterval(function() {
       $('.elapsed-time').html(moment().hours(0).minutes(0).seconds(elapsed++).format('HH:mm:ss'))
     }, 1000)
+
 :plain
   // Alert
   $('.ajax').removeClass('alert-success').removeClass('alert-danger')

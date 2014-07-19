@@ -1,9 +1,12 @@
-.new-user-modal.modal.fade
-  .modal-dialog
-    .modal-content
-      = render 'form'
+.alert.ajax{role: 'alert'}
+  %span.alert-content
+  %button.close{type: 'button'}
+    %span{aria: {hidden: 'true'}} &times;
+    %span.sr-only Close
 
-.panel.panel-default
+.new-user-form= render 'form'
+
+.panel.panel-info
   .panel-heading.text-center Users
   .panel-body.padding-0
     %table.users.table.table-striped.table-responsive

@@ -7,6 +7,20 @@ Given(/^the employee has time logs$/) do
 end
 When(/^I create an employee$/) do
   click_link 'Add User'
+
+  @password = Faker::Internet.password
+
+  @email = Faker::Internet.email
+
+  within ('form') do
+    select 'employee', from: 'user_role'
+    fill_in 'user_email', with: @email
+    fill_in 'user_first_name', with: 'Jimmy'
+    fill_in 'user_last_name', with: 'Pardo'
+    fill_in 'user_password', with: @password
+    fill_in 'user_password_confirmation', with: @password
+    click_button 'Save'
+  end
 end
 
 When(/^I delete an employee$/) do
@@ -16,7 +30,8 @@ When(/^I delete an employee$/) do
 end
 
 Then(/^I should see that employee$/) do
-  pending # express the regexp above with the code you wish you had
+  page.should have_content "Successfully created Jimmy Pardo."
+  page.should have_content @email
 end
 
 Then(/^I should see employee time logs$/) do
@@ -34,5 +49,5 @@ Then(/^I should not see employee time logs$/) do
 end
 
 Then(/^I should not see that employee anymore$/) do
-  page.should_not have_content @employee.display_name
+  page.should have_content "Successfully deleted #{@employee.display_name}."
 end

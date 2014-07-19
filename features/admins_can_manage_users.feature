@@ -1,5 +1,5 @@
-Feature: Admins can manage employees
-  Admins can create and delete employees.
+Feature: Admins can manage users
+  Admins can create and delete users.
   Admins can only view employee time logs when clocked in.
 
   Background:
