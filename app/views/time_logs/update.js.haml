@@ -1,10 +1,3 @@
-:plain
-  // Alert
-  $('.ajax').removeClass('alert-success').removeClass('alert-danger')
-  $('.ajax').addClass('alert-#{@message[:type]}')
-  $('.alert-content').html('#{@message[:text]}')
-  $('.ajax').velocity('transition.slideDownIn', 400);
-
 - if @message[:type] == 'success'
   :plain
     // Transition forms
@@ -23,3 +16,9 @@
     window.string += "</tr>"
     $(window.string).insertAfter($('.own-history tr:first'))
     $('.inserted:first').velocity('transition.slideDownIn', 400)
+:plain
+  // Alert
+  $('.ajax').removeClass('alert-success').removeClass('alert-danger')
+  $('.ajax').addClass('alert-#{@message[:type]}')
+  $('.alert-content').html('#{@message[:text]}')
+  $('.ajax').velocity('transition.slideDownIn', 400);

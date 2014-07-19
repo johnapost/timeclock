@@ -1,0 +1,26 @@
+= simple_form_for @new_user, validate: true, url: create_users_path, remote: true, defaults: {label: false, input_html: {class: 'form-control bottom-10px'}} do |f|
+  .modal-header.text-center
+    %h3 Create New User
+  .modal-body
+    .alert.ajax{role: 'alert'}
+      %span.alert-content
+      %button.close{type: 'button'}
+        %span{aria: {hidden: 'true'}} &times;
+        %span.sr-only Close
+
+    .form-inputs
+      .row
+        .col-sm-6= f.input :id, placeholder: 'ID'
+        .col-sm-6.capitalize= f.input :role, collection: [:admin, :employee], include_blank: false
+      .row.top-10px
+        .col-xs-12= f.input :email, placeholder: 'Email'
+      .row.top-10px
+        .col-sm-6= f.input :first_name, placeholder: 'First Name'
+        .col-sm-6= f.input :last_name, placeholder: 'Last Name'
+      .row.top-10px
+        .col-sm-6= f.input :password, placeholder: 'Password'
+        .col-sm-6= f.input :password_confirmation, placeholder: 'Confirm Password'
+
+  .modal-footer
+    = f.submit 'Save', class: 'btn btn-primary btn-md'
+    = link_to 'Close', '#', class: 'btn btn-md btn-danger', data: {dismiss: 'modal'}

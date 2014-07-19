@@ -1,10 +1,3 @@
-:plain
-  // Alert
-  $('.ajax').removeClass('alert-success').removeClass('alert-danger')
-  $('.ajax').addClass('alert-#{@message[:type]}')
-  $('.alert-content').html('#{@message[:text]}')
-  $('.ajax').velocity('transition.slideDownIn', 400);
-
 - if @message[:type] == 'success'
   :plain
     // Transition forms
@@ -20,3 +13,9 @@
     window.timer = setInterval(function() {
       $('.elapsed-time').html(moment().hours(0).minutes(0).seconds(elapsed++).format('HH:mm:ss'))
     }, 1000)
+:plain
+  // Alert
+  $('.ajax').removeClass('alert-success').removeClass('alert-danger')
+  $('.ajax').addClass('alert-#{@message[:type]}')
+  $('.alert-content').html('#{@message[:text]}')
+  $('.ajax').velocity('transition.slideDownIn', 400);

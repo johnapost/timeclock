@@ -7,14 +7,19 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new user_params
+    @new_user = User.new user_params
 
     respond_to do |format|
       format.js do
-        if @user.save
-          @message = {text: "Successfully created #{@user.display_name}.", type: 'success'}
+        if User.where(id: @new_user.id).any?
+          @message = {text: 'That ID already exists. Please try a different one.', type: 'danger'}
         else
-          @message = {text: "Unable to create #{@user.display_name}", type: 'danger'}
+          if @new_user.save
+            @message = {text: "Successfully created #{@user.display_name}.", type: 'success'}
+          else
+            @message = {text: "Unable to create #{@user.display_name}", type: 'danger'}
+            puts @new_user.errors.full_messages
+          end
         end
       end
     end
@@ -36,6 +41,6 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:id, :role, :first_name, :last_name, :password, :password_confirmation)
+      params.require(:user).permit(:id, :role, :email, :first_name, :last_name, :password, :password_confirmation)
     end
 end

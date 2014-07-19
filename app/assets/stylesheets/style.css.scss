@@ -90,13 +90,19 @@ $lg: 1200px;
   margin-bottom: 0;
 }
 
+// Forms
+.capitalize {
+  input, select {
+    text-transform: capitalize;
+  }
+}
+
 // Alerts
 .alert.ajax {
   display: none;
 }
 
 // Table
-
 tr.inserted {
   display: none;
 }

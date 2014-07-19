@@ -1,0 +1,17 @@
+- if @message[:type] == 'success'
+  :plain
+    $('.users tr.user_#{@user.id}').velocity('transition.slideDownOut', 400)
+- else
+  :plain
+    $('.modal-content').html("#{escape_javascript(render 'users/form')}")
+
+:plain
+  // Alert
+  $('.ajax').removeClass('alert-success').removeClass('alert-danger')
+  $('.ajax').addClass('alert-#{@message[:type]}')
+  $('.alert-content').html('#{@message[:text]}')
+  $('.ajax').velocity('transition.slideDownIn', 400);
+
+  $('.ajax .close').click(function() {
+    $('.ajax').velocity('transition.slideUpOut', 400);
+  })
