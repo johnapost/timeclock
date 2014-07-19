@@ -5,7 +5,7 @@
     window.string +=   "<td>#{@new_user.id}</td>"
     window.string +=   "<td>#{@new_user.display_name}</td>"
     window.string +=   "<td>#{@new_user.email}</td>"
-    window.string +=   "<td>#{@new_user.active_clock?}</td>"
+    window.string +=   "<td>#{@new_user.status}</td>"
     window.string +=   "<td>#{total_duration @new_user.time_logs.seven_days}</td>"
     window.string +=   "<td>"
     window.string +=     "<a class='btn btn-xs btn-danger' data-confirm='Are you sure?' data-method='delete' data-remote='true' href='/users/#{@new_user.id}' rel='nofollow'>Delete User</a>"

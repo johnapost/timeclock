@@ -12,7 +12,6 @@ Feature: Users can view PDF reports
     When I view the employee's PDF
     Then I should see all of the employee's recent time logs
 
-  @wip
   Scenario: Employee views his/her own report
     Given I am logged in as an employee
     When I view my PDF
