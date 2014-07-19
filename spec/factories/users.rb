@@ -16,6 +16,8 @@
 #  created_at             :datetime
 #  updated_at             :datetime
 #  role                   :integer          default(1), not null
+#  last_name              :string(255)
+#  first_name             :string(255)
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl
@@ -25,6 +27,8 @@ FactoryGirl.define do
     @password = Faker::Internet.password 8
 
     email Faker::Internet.email
+    first_name Faker::Name.first_name
+    last_name Faker::Name.last_name
     password @password
     password_confirmation @password
     role :employee
@@ -34,6 +38,8 @@ FactoryGirl.define do
     @password = Faker::Internet.password 8
 
     email Faker::Internet.email
+    first_name Faker::Name.first_name
+    last_name Faker::Name.last_name
     password @password
     password_confirmation @password
     role :admin

@@ -16,6 +16,8 @@
 #  created_at             :datetime
 #  updated_at             :datetime
 #  role                   :integer          default(1), not null
+#  last_name              :string(255)
+#  first_name             :string(255)
 #
 
 class User < ActiveRecord::Base
@@ -29,5 +31,9 @@ class User < ActiveRecord::Base
 
   def active_clock?
     self.time_logs.where(clock_out: nil).any?
+  end
+
+  def display_name
+    "#{self.first_name} #{self.last_name}"
   end
 end

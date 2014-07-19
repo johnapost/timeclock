@@ -6,16 +6,16 @@
     %table.users.table.table-striped.table-responsive
       %tr
         %th ID
+        %th Name
         %th Email
-        %th Last Clock In
         %th Status
         %th 7 Day Total
         %th Actions
       - @users.each do |user|
         %tr{class: "user_#{user.id}"}
           %td= user.id
+          %td= user.display_name
           %td= user.email
-          %td= user.time_logs.any? ? user.time_logs.first.display_clock_in : 'No time logs'
           %td= user.active_clock?
           %td= total_duration user.time_logs.seven_days
           %td

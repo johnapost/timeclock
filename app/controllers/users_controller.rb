@@ -12,9 +12,9 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.js do
         if @user.destroy
-          @message = {text: "Successfully deleted #{@user.email}.", type: 'success'}
+          @message = {text: "Successfully deleted #{@user.display_name}.", type: 'success'}
         else
-          @message = {text: "Unable to delete #{@user.email}.", type: 'danger'}
+          @message = {text: "Unable to delete #{@user.display_name}.", type: 'danger'}
         end
       end
     end

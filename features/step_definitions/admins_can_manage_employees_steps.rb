@@ -20,19 +20,19 @@ Then(/^I should see that employee$/) do
 end
 
 Then(/^I should see employee time logs$/) do
-  page.should have_content @employee.email
+  page.should have_content @employee.display_name
   (0..2).each do |index|
     page.should have_content @employee.time_logs[index].display_duration
   end
 end
 
 Then(/^I should not see employee time logs$/) do
-  page.should_not have_content @employee.email
+  page.should_not have_content @employee.display_name
   (0..2).each do |index|
     page.should_not have_content @employee.time_logs[index].display_duration
   end
 end
 
 Then(/^I should not see that employee anymore$/) do
-  page.should_not have_content @employee.email
+  page.should_not have_content @employee.display_name
 end
