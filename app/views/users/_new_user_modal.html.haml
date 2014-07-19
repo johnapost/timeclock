@@ -1,0 +1,14 @@
+.new-user-modal.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-header.text-center
+        %h3 Create New User
+      .modal-body
+      = simple_form_for @user, validate: true, url: users_path, remote: true, defaults: {label: false, input_html: {class: 'form-control bottom-10px'}} do |f|
+        = f.error_notification
+
+        .form-inputs
+
+        .form-actions.top-20px= f.submit 'Clock in', class: 'btn btn-primary btn-md'
+      .modal-footer
+        = link_to 'Close', '#', class: 'btn btn-md btn-danger', data: {dismiss: 'modal'}

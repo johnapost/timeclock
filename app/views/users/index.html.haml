@@ -1,3 +1,5 @@
+= render 'new_user_modal'
+
 .panel.panel-default
   .panel-heading.text-center Users
   .panel-body.padding-0
@@ -19,4 +21,4 @@
           %td
             - unless user == @user
               = link_to 'Delete User', destroy_user_path(user.id), data: {confirm: 'Are you sure?'}, remote: true, method: :delete, class: 'btn btn-xs btn-danger'
-  .panel-footer= link_to 'Add User', '#', class: 'btn btn-xs btn-primary'
+  .panel-footer= link_to 'Add User', '#', data: {toggle: 'modal', target: '.new-user-modal'}, class: 'btn btn-xs btn-primary'

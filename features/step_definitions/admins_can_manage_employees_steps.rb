@@ -5,9 +5,18 @@ Given(/^the employee has time logs$/) do
     current_log.save!
   end
 end
+When(/^I create an employee$/) do
+  click_link 'Add User'
+end
 
 When(/^I delete an employee$/) do
-  click_link 'Delete User'
+  within (".user_#{@employee.id}") do
+    click_link 'Delete User'
+  end
+end
+
+Then(/^I should see that employee$/) do
+  pending # express the regexp above with the code you wish you had
 end
 
 Then(/^I should see employee time logs$/) do
