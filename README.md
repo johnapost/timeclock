@@ -18,7 +18,7 @@ Dependencies
 Initial Setup
 --------------
 
-With MySQL up and running on your machine all you should need to do is run `rake db:create db:seed db:migrate`.
+With MySQL up and running on your machine all you should need to do is run `rake db:create db:migrate db:seed`.
 
 Once that is set, you can log in with the below credentials:
 
