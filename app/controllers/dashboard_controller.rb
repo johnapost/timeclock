@@ -3,8 +3,7 @@ class DashboardController < ApplicationController
 
   def index
     @time_log = TimeLog.new
-    @date = DateTime.now
-    @time_logs = @user.time_logs.where(clock_in: @date.advance(days: -7)..@date.end_of_day).where.not(clock_out: nil)
+    @time_logs = @user.time_logs.seven_days
 
     if @user.admin?
       @employees = User.where(role: 1)

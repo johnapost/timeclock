@@ -18,4 +18,4 @@
                     %td= time_log.display_clock_in
                     %td= time_log.display_clock_out
                     %td= time_log.display_duration
-            .panel-footer.text-center 7 Day Total: #{total_duration employee.time_logs}
+            .panel-footer.text-center 7 Day Total: #{total_duration employee.time_logs.seven_days}

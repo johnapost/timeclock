@@ -1,0 +1,16 @@
+%table.users.table.table-striped.table-responsive
+  %tr
+    %td ID
+    %td Email
+    %td Last Clock In
+    %td Status
+    %td 7 Day Total
+    %td Actions
+  - @users.each do |user|
+    %tr
+      %td= user.id
+      %td= user.email
+      %td= user.time_logs.first.display_clock_in
+      %td= user.active_clock?
+      %td= total_duration user.time_logs.seven_days
+      %td Actions
