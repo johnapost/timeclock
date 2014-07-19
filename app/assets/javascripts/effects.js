@@ -33,6 +33,10 @@
     john.turbolinks();
   });
 
+  $(document).on('page:before-change', function(){
+    $('body').velocity('transition.fadeOut', 400)
+  });
+
   $(document).on('page:fetch', function(){
   });
 
@@ -44,6 +48,7 @@
   });
 
   $(document).on('page:load', function(){
+    $('body').velocity('transition.fadeIn', 400)
   });
 
   $(window).on("resize", function(){
