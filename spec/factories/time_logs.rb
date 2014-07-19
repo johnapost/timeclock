@@ -14,8 +14,11 @@
 
 FactoryGirl.define do
   factory :time_log do
-    user_id 1
     clock_in DateTime.now.advance(hours: -1)
     clock_out DateTime.now
+
+    factory :active_time_log do
+      clock_out nil
+    end
   end
 end

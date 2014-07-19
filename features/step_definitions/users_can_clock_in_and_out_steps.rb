@@ -19,6 +19,7 @@ end
 
 Given(/^there is an existing time log$/) do
   @time_log = FactoryGirl.create :time_log
+  @time_log.user_id = @employee.id
 end
 
 When(/^I clock in with an existing ID$/) do

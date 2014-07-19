@@ -1,5 +1,5 @@
 Given(/^there is another admin$/) do
-  @another_admin = FactoryGirl.create :another_admin
+  @another_admin = FactoryGirl.create :admin
 end
 
 Given(/^the employee has time logs$/) do
