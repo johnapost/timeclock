@@ -1,18 +1,22 @@
-%table.users.table.table-striped.table-responsive
-  %tr
-    %td ID
-    %td Email
-    %td Last Clock In
-    %td Status
-    %td 7 Day Total
-    %td Actions
-  - @users.each do |user|
-    %tr{class: "user_#{user.id}"}
-      %td= user.id
-      %td= user.email
-      %td= user.time_logs.any? ? user.time_logs.first.display_clock_in : 'No time logs'
-      %td= user.active_clock?
-      %td= total_duration user.time_logs.seven_days
-      %td
-        - unless user == @user
-          = link_to 'Delete User', destroy_user_path(user.id), data: {confirm: 'Are you sure?'}, remote: true, method: :delete, class: 'btn btn-xs btn-danger'
+.panel.panel-default
+  .panel-heading.text-center Users
+  .panel-body.padding-0
+    %table.users.table.table-striped.table-responsive
+      %tr
+        %th ID
+        %th Email
+        %th Last Clock In
+        %th Status
+        %th 7 Day Total
+        %th Actions
+      - @users.each do |user|
+        %tr{class: "user_#{user.id}"}
+          %td= user.id
+          %td= user.email
+          %td= user.time_logs.any? ? user.time_logs.first.display_clock_in : 'No time logs'
+          %td= user.active_clock?
+          %td= total_duration user.time_logs.seven_days
+          %td
+            - unless user == @user
+              = link_to 'Delete User', destroy_user_path(user.id), data: {confirm: 'Are you sure?'}, remote: true, method: :delete, class: 'btn btn-xs btn-danger'
+  .panel-footer= link_to 'Add User', '#', class: 'btn btn-xs btn-primary'

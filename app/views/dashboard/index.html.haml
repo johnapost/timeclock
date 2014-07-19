@@ -17,13 +17,13 @@
   .col-sm-6
     .panel.panel-default
       .panel-heading.text-center Time Log History
-      .panel-body
+      .panel-body.padding-0
         %table.own-history.table.table-striped.table-responsive
           %tr
-            %td ID
-            %td Clock In
-            %td Clock Out
-            %td Duration
+            %th ID
+            %th Clock In
+            %th Clock Out
+            %th Duration
           - @time_logs.each do |time_log|
             %tr
               %td= time_log.id

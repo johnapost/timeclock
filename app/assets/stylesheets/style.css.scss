@@ -81,12 +81,22 @@ $lg: 1200px;
 
 .scroll-y { overflow-y: scroll; }
 
+// Overrides
+.panel-heading {
+  font-weight: bold;
+}
+
+.table {
+  margin-bottom: 0;
+}
+
 // Alerts
 .alert.ajax {
   display: none;
 }
 
 // Table
+
 tr.inserted {
   display: none;
 }
