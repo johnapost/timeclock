@@ -27,3 +27,4 @@
           %td
             - unless user == @user
               = link_to 'Delete User', destroy_user_path(user.id), data: {confirm: 'Are you sure?'}, remote: true, method: :delete, class: 'btn btn-xs btn-danger'
+            = link_to 'Report', pdf_path(user.id, format: :pdf), target: '_blank', class: 'btn btn-xs btn-info'
