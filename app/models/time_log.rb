@@ -17,6 +17,7 @@ class TimeLog < ActiveRecord::Base
   scope :seven_days, -> {where(clock_in: DateTime.now.advance(days: -7).beginning_of_day..DateTime.now.end_of_day).where.not(clock_out: nil)}
 
   validate :user_id, :clock_in, presence: true
+  validate :user_exists
 
   def duration
     self.clock_out.to_i - self.clock_in.to_i if self.clock_out && self.clock_in
@@ -33,4 +34,10 @@ class TimeLog < ActiveRecord::Base
   def display_clock_out
     self.clock_out.strftime('%m/%d/%Y - %l:%M %p')
   end
+
+  private
+
+    def user_exists
+      errors.add(:user_id, 'user does not exist') unless User.exists?(self.user_id)
+    end
 end

@@ -11,15 +11,11 @@ Given(/^I am logged in as an (\w+)$/) do |role|
 end
 
 Given(/^I am clocked in as an (\w+)$/) do |role|
-  @time_log = FactoryGirl.create :time_log
-  @time_log.user_id = eval("@#{role}.id")
-  @time_log.clock_out = nil
-  @time_log.save!
+  @time_log = FactoryGirl.create :active_time_log, user_id: eval("@#{role}.id")
 end
 
 Given(/^there is an existing time log$/) do
-  @time_log = FactoryGirl.create :time_log
-  @time_log.user_id = @employee.id
+  @time_log = FactoryGirl.create :time_log, user_id: @employee.id
 end
 
 When(/^I clock in with an existing ID$/) do
