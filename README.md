@@ -32,7 +32,7 @@ Using the Application
 
 This application is heavily reliant on JavaScript. Please make sure you have it enabled!
 
-Also, I am aware that the running clock is not very accurate (sometimes it's off by 2 seconds), this can be improved by polling the elapsed time from the server.
+Also, I am aware that the running clock is not very accurate (sometimes it's off by 2 seconds), this can be improved by polling the elapsed time from the server. I hope to get a chance to fix this soon.
 
 Testing
 =======
@@ -42,6 +42,8 @@ Testing is handled with both RSpec and Cucumber. Please run `rspec` and `cucumbe
 TimeClock uses the [Rails Spring preloader](https://github.com/rails/spring). Try running `spring stop` before running the tests to close any orphan preloaded processes from another application.
 
 TimeClock uses [SimpleCov](https://github.com/colszowka/simplecov). See testing coverage by running `spring cucumber && spring rspec` then opening `coverage/index.html` in your browser
+
+TimeClock has 100% test coverage according to SimpleCov!
 
 License
 =======
