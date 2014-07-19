@@ -44,4 +44,15 @@ FactoryGirl.define do
     password_confirmation @password
     role :admin
   end
+
+  factory :another_admin, class: User do
+    @password = Faker::Internet.password 8
+
+    email Faker::Internet.email
+    first_name Faker::Name.first_name
+    last_name Faker::Name.last_name
+    password @password
+    password_confirmation @password
+    role :admin
+  end
 end
