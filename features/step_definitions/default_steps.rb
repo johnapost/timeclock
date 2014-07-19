@@ -1,3 +1,8 @@
+Given(/^there are admin and employee accounts$/) do
+  @admin = FactoryGirl.create :admin
+  @employee = FactoryGirl.create :employee
+end
+
 Given(/^I am at the (\w+) page$/) do |page|
   if page == 'login'
     visit new_user_session_path

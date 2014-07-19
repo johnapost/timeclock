@@ -91,6 +91,10 @@ tr.inserted {
   display: none;
 }
 
+.employee-history {
+  display: none;
+}
+
 // Firefox Responsive Table
 @-moz-document url-prefix() {
   fieldset { display: table-cell; }

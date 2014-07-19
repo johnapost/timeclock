@@ -5,5 +5,9 @@ class DashboardController < ApplicationController
     @time_log = TimeLog.new
     @date = DateTime.now
     @time_logs = @user.time_logs.where(clock_in: @date.advance(days: -7)..@date.end_of_day).where.not(clock_out: nil)
+
+    if @user.admin?
+      @employees = User.where(role: 1)
+    end
   end
 end

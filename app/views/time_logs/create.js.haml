@@ -10,6 +10,7 @@
     // Transition forms
     $('.clock_in').velocity('transition.slideDownOut', 400);
     $('.clock_out').delay(400).velocity('transition.slideUpIn', 400);
+    $('.employee-history').delay(400).velocity('transition.slideUpIn', 400);
 
     // Build clock out form
     window.string = ''
@@ -30,6 +31,7 @@
     window.string +=   "</div>"
     window.string += "</form>"
     $('.clock_out .panel-body').html(window.string)
+
     clearInterval(window.timer)
     window.elapsed = 0
     $('.elapsed-time').html(moment().hours(0).minutes(0).seconds(elapsed).format('HH:mm:ss'))

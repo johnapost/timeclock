@@ -16,9 +16,9 @@
           = render 'time_logs/clock_out'
   .col-sm-6
     .panel.panel-default
-      .panel-heading Time Log History
+      .panel-heading.text-center Time Log History
       .panel-body
-        %table.table.table-striped.table-responsive
+        %table.own-history.table.table-striped.table-responsive
           %tr
             %td ID
             %td Clock In
@@ -30,3 +30,6 @@
               %td= time_log.display_clock_in
               %td= time_log.display_clock_out
               %td= time_log.display_duration
+      .panel-footer.text-center 7 Day Total: #{total_duration @time_logs}
+
+= render 'users/index' if @user.admin?

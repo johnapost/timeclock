@@ -21,6 +21,8 @@
 class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
+  default_scope {order(id: :asc)}
+
   has_many :time_logs
 
   enum role: {admin: 0, employee: 1} unless instance_methods.include? :role

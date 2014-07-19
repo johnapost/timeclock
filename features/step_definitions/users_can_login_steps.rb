@@ -1,8 +1,3 @@
-Given(/^there are admin and employee accounts$/) do
-  @admin = FactoryGirl.create :admin
-  @employee = FactoryGirl.create :employee
-end
-
 When(/^I enter my (\w+) credentials$/) do |role|
   within ('form') do
     fill_in 'user_email', with: eval("@#{role}.email")
