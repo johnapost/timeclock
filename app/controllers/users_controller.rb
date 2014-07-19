@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    @user = User.new
+    @new_user = User.new
   end
 
   def destroy

@@ -33,6 +33,19 @@
     john.turbolinks();
   });
 
+  $(document).on('page:fetch', function(){
+  });
+
+  $(document).on('page:change', function(){
+    john.turbolinks();
+  });
+
+  $(document).on('page:restore', function(){
+  });
+
+  $(document).on('page:load', function(){
+  });
+
   $(window).on("resize", function(){
     john.getWindowSize();
     john.sizeContent();
