@@ -32,6 +32,8 @@ Using the Application
 
 This application is heavily reliant on JavaScript. Please make sure you have it enabled!
 
+Also, I am aware that the running clock is not very accurate (sometimes it's off by 2 seconds), this can be improved by polling the elapsed time from the server.
+
 Testing
 =======
 
