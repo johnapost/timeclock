@@ -5,7 +5,6 @@ RSpec.describe TimeLogsController, type: :controller do
   describe 'as an admin' do
     before (:each) do
       @user = FactoryGirl.create :user_with_time_log
-      @time_log = @user.time_logs.first
       sign_in @user
     end
 
@@ -18,7 +17,7 @@ RSpec.describe TimeLogsController, type: :controller do
 
     describe "POST 'update'" do
       it "returns http success" do
-        xhr :post, :update, {id: @user.id, time_log: {id: @time_log.id}}
+        xhr :post, :update, {id: @user.id, time_log: {id: @user.time_logs.first.id}}
         expect(response).to be_success
       end
     end
