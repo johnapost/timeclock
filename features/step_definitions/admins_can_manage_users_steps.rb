@@ -1,12 +1,10 @@
 Given(/^there is another admin$/) do
-  @another_admin = FactoryGirl.create :another_admin
+  @another_admin = FactoryGirl.create :admin
 end
 
 Given(/^the employee has time logs$/) do
   (0..2).each do
-    current_log = FactoryGirl.create :time_log
-    current_log.user_id = @employee.id
-    current_log.save!
+    current_log = FactoryGirl.create :time_log, user_id: @employee.id
   end
 end
 When(/^I create an (\w+)$/) do |role|

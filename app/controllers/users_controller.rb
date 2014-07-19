@@ -26,14 +26,15 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find params[:id]
+    @destroy_user = User.find params[:id]
 
     respond_to do |format|
       format.js do
-        if @user.destroy
-          @message = {text: "Successfully deleted #{@user.display_name}.", type: 'success'}
+        unless @user == @destroy_user
+          @destroy_user.destroy
+          @message = {text: "Successfully deleted #{@destroy_user.display_name}.", type: 'success'}
         else
-          @message = {text: "Unable to delete #{@user.display_name}.", type: 'danger'}
+          @message = {text: "Unable to delete #{@destroy_user.display_name}.", type: 'danger'}
         end
       end
     end

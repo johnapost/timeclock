@@ -32,6 +32,7 @@ group :development do
   gem 'quiet_assets' # Mute asset messages in console
   gem 'spring' # Fork dev server
   gem 'spring-commands-cucumber' # Spring for Cucumber
+  gem 'spring-commands-rspec' # Spring for RSpec
 end
 
 group :test do

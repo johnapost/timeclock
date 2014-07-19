@@ -23,36 +23,33 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :employee, class: User do
+  factory :user do
     @password = Faker::Internet.password 8
 
-    email Faker::Internet.email
-    first_name Faker::Name.first_name
-    last_name Faker::Name.last_name
+    email {Faker::Internet.email}
+    first_name {Faker::Name.first_name}
+    last_name {Faker::Name.last_name}
     password @password
     password_confirmation @password
-    role :employee
-  end
 
-  factory :admin, class: User do
-    @password = Faker::Internet.password 8
+    factory :user_with_active_clock do
+      after :create do |user|
+        create(:active_time_log, user: user)
+      end
+    end
 
-    email Faker::Internet.email
-    first_name Faker::Name.first_name
-    last_name Faker::Name.last_name
-    password @password
-    password_confirmation @password
-    role :admin
-  end
+    factory :user_with_time_log do
+      after :create do |user|
+        create(:time_log, user: user)
+      end
+    end
 
-  factory :another_admin, class: User do
-    @password = Faker::Internet.password 8
+    factory :employee do
+      role :employee
+    end
 
-    email Faker::Internet.email
-    first_name Faker::Name.first_name
-    last_name Faker::Name.last_name
-    password @password
-    password_confirmation @password
-    role :admin
+    factory :admin, class: User do
+      role :admin
+    end
   end
 end

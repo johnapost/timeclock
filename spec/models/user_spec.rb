@@ -23,5 +23,17 @@
 require 'rails_helper'
 
 RSpec.describe User, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:user) {FactoryGirl.create :user_with_active_clock}
+
+  it 'gives active_clock?' do
+    expect(user.active_clock?).to eq true
+  end
+
+  it 'gives display_name' do
+    expect(user.display_name).to eq "#{user.first_name} #{user.last_name}"
+  end
+
+  it 'gives status' do
+    expect(user.status).to eq 'Clocked In'
+  end
 end

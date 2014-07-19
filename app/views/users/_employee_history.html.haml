@@ -12,7 +12,7 @@
                   %th Clock In
                   %th Clock Out
                   %th Duration
-                - employee.time_logs.each do |time_log|
+                - employee.time_logs.seven_days.each do |time_log|
                   %tr
                     %td= time_log.id
                     %td= time_log.display_clock_in
