@@ -14,8 +14,12 @@ When(/^I enter the wrong (\w+) credentials$/) do |role|
   end
 end
 
-Then(/^I should be successfully logged in$/) do
-  page.should have_content 'Signed in successfully.'
+When(/^I log out$/) do
+  click_link 'Sign Out'
+end
+
+Then(/^I should be successfully logged (\w+)$/) do |status|
+  page.should have_content "Signed #{status} successfully."
 end
 
 Then(/^I should be refused access$/) do

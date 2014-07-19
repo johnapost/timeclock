@@ -15,6 +15,11 @@ Feature: Users can log in
     When I enter the wrong admin credentials
     Then I should be refused access
 
+  Scenario: Admin can log out
+    Given I am logged in as an admin
+    When I log out
+    Then I should be successfully logged out
+
   Scenario: Employee can login
     Given I am at the login page
     When I enter my employee credentials
@@ -24,3 +29,8 @@ Feature: Users can log in
     Given I am at the login page
     When I enter the wrong employee credentials
     Then I should be refused access
+
+  Scenario: Employee can log out
+    Given I am logged in as an employee
+    When I log out
+    Then I should be successfully logged out

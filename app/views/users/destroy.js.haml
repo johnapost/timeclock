@@ -8,4 +8,4 @@
 - if @message[:type] == 'success'
   :plain
     // Transition forms
-    $('.users tr.user_#{@user.id}').velocity('transition.slideDownOut', 400)
+    $('.users tr.user_#{@destroy_user.id}').velocity('transition.slideDownOut', 400)

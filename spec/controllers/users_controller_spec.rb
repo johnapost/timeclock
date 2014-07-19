@@ -15,7 +15,7 @@ RSpec.describe UsersController, :type => :controller do
   end
 
   describe "POST 'create'" do
-    it "returns http success" do
+    it "returns http success", js: true do
       @new_user = FactoryGirl.build :employee
       xhr :post, :create, {
         user: {
@@ -34,7 +34,7 @@ RSpec.describe UsersController, :type => :controller do
     describe 'with invalid user' do
       render_views
 
-      it "rerenders the form" do
+      it "rerenders the form", js: true do
         @new_user = FactoryGirl.build :employee
         xhr :post, :create, {
           user: {
@@ -54,7 +54,7 @@ RSpec.describe UsersController, :type => :controller do
     describe 'with invalid params' do
       render_views
 
-      it "rerenders the form" do
+      it "rerenders the form", js: true do
         @new_user = FactoryGirl.build :employee
         xhr :post, :create, {
           user: {
@@ -73,10 +73,20 @@ RSpec.describe UsersController, :type => :controller do
   end
 
   describe "POST 'destroy'" do
-    it "returns http success" do
-      xhr :post, :destroy, {id: FactoryGirl.create(:employee).id}
-      expect(response).to be_success
+    describe 'with valid params' do
+      it "returns http success", js: true do
+        xhr :post, :destroy, {id: FactoryGirl.create(:employee).id}
+        expect(response).to be_success
+      end
+    end
+
+    describe 'with invalid params' do
+      render_views
+
+      it "returns an error message", js: true do
+        xhr :post, :destroy, {id: @user.id}
+        expect(response.body).to include 'Unable to delete'
+      end
     end
   end
-
 end

@@ -31,7 +31,6 @@ FactoryGirl.define do
     last_name {Faker::Name.last_name}
     password @password
     password_confirmation @password
-    role :employee
 
     factory :user_with_active_clock do
       after :create do |user|
