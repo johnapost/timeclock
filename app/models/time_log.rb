@@ -14,7 +14,7 @@ class TimeLog < ActiveRecord::Base
   belongs_to :user
 
   default_scope {order(clock_in: :desc)}
-  scope :seven_days, -> {where(clock_in: DateTime.now.advance(days: -7)..DateTime.now.end_of_day).where.not(clock_out: nil)}
+  scope :seven_days, -> {where(clock_in: DateTime.now.advance(days: -7).beginning_of_day..DateTime.now.end_of_day).where.not(clock_out: nil)}
 
   validate :user_id, :clock_in, presence: true
 

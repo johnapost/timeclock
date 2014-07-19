@@ -3,6 +3,6 @@
 
   .form-inputs
     = f.input :user_id, required: true, as: :hidden, input_html: {value: @user.id}
-    = f.input :id, required: true, placeholder: 'Time Log ID'
+    = f.input :id, placeholder: 'Time Log ID'
 
   .form-actions.top-20px= f.submit 'Clock in', class: 'btn btn-primary btn-md'

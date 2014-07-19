@@ -8,8 +8,13 @@ Then(/^I should see all of the employee's recent time logs$/) do
   convert_pdf_to_page
 
   page.should have_content @employee.display_name
+  @employee.time_logs.seven_days.each do |log|
+    page.should have_content log.id
+    page.should have_content log.display_clock_in
+    page.should have_content log.display_clock_out
+    page.should have_content log.display_duration
+  end
 end
-
 
 def convert_pdf_to_page
   reader = PDF::Reader.new(StringIO.new(page.source))
