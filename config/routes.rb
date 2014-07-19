@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'dashboard#index'
 
   resources :time_logs, only: [:create, :update]
-  resources :users, only: [:index, :create, :update] do
+  resources :users, only: [:index, :update] do
     delete '', to: 'users#destroy', as: :destroy, on: :member
+    post '', to: 'users#create', as: :create, on: :member
   end
 end

@@ -6,6 +6,20 @@ class UsersController < ApplicationController
     @new_user = User.new
   end
 
+  def create
+    @user = User.new user_params
+
+    respond_to do |format|
+      format.js do
+        if @user.save
+          @message = {text: "Successfully created #{@user.display_name}.", type: 'success'}
+        else
+          @message = {text: "Unable to create #{@user.display_name}", type: 'danger'}
+        end
+      end
+    end
+  end
+
   def destroy
     @user = User.find params[:id]
 
@@ -19,4 +33,9 @@ class UsersController < ApplicationController
       end
     end
   end
+
+  private
+    def user_params
+      params.require(:user).permit(:id, :role, :first_name, :last_name, :password, :password_confirmation)
+    end
 end
