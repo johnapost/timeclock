@@ -18,7 +18,6 @@ class UsersController < ApplicationController
             @message = {text: "Successfully created #{@new_user.display_name}.", type: 'success'}
           else
             @message = {text: "Unable to create #{@new_user.display_name}", type: 'danger'}
-            puts @new_user.errors.full_messages
           end
         end
       end
