@@ -1,7 +1,7 @@
 Introduction
 ============
 
-This is a sample timeclock application showing how I like to structure and develop my applications. This also shows my gem preferences.
+This is a sample timeclock application showing how I like to develop my applications. This also shows my gem preferences. I thought I would challenge myself with this one and use a minimum amount of pages, relying on AJAX to do all the heavy lifting.
 
 Getting Started
 ===============
@@ -9,13 +9,13 @@ Getting Started
 Dependencies
 ------------
 
-* TimeClock uses the [Mysql2 gem](https://github.com/brianmario/mysql2). Please refer to the gem's documentation to ensure that it is able to locate MySQL on your machine. Thanks!
+* TimeClock uses the [Mysql2 gem](https://github.com/brianmario/mysql2). Please refer to the gem's documentation to ensure that it is able to locate MySQL on your machine.
 
 * TimeClock uses the [Poltergeist gem](https://github.com/teampoltergeist/poltergeist) for Capybara's JS driver. This gem requires PhantomJS version 1.8.1 or later. Refer to the documentation for installation if necessary.
 
-* If there's anything I missed that you had trouble installing, please let me know.
+* If there's anything I missed that you had trouble installing, please let me know. Thanks!
 
-Database Setup
+Initial Setup
 --------------
 
 With MySQL up and running on your machine all you should need to do is run `rake db:create db:seed db:migrate`.
@@ -29,6 +29,8 @@ After you are logged in, you can create employee users as well as other administ
 
 Using the Application
 =====================
+
+This application is heavily reliant on JavaScript. Please make sure you have it enabled!
 
 Testing
 =======
