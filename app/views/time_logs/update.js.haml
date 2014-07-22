@@ -7,14 +7,7 @@
     $('.clock_in').delay(400).velocity('transition.slideUpIn', 400);
 
     clearInterval(window.timer)
-    window.string = ''
-    window.string += "<tr class='inserted'>"
-    window.string +=   "<td>#{@time_log.id}</td>"
-    window.string +=   "<td>#{@time_log.display_clock_in}</td>"
-    window.string +=   "<td>#{@time_log.display_clock_out}</td>"
-    window.string +=   "<td>#{@time_log.display_duration}</td>"
-    window.string += "</tr>"
-    $(window.string).insertAfter($('.own-history tr:first'))
+    $("#{j (render 'time_logs/new_row')}").insertAfter($('.own-history tr:first'))
     $('.inserted:first').velocity('transition.slideDownIn', 400)
 
 :plain

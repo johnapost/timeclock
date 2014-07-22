@@ -1,11 +1,11 @@
 - if @message[:type] == 'success'
   :plain
-    $("#{escape_javascript(render 'users/new_row')}").insertAfter($('.users tr:last'))
+    $("#{j (render 'users/new_row')}").insertAfter($('.users tr:last'))
     $('.inserted:last').velocity('transition.slideUpIn', 400)
     $('.form-inputs input').val('')
 - else
   :plain
-    $('.new-user-form').html("#{escape_javascript(render 'users/form')}")
+    $('.new-user-form').html("#{j (render 'users/form')}")
 
 :plain
   // Alert
