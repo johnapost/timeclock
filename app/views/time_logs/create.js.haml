@@ -8,11 +8,16 @@
     $('.clock_out .panel-body').html("#{escape_javascript(render 'time_logs/clock_out')}")
 
     clearInterval(window.timer)
-    window.elapsed = 0
-    $('.elapsed-time').html(moment().hours(0).minutes(0).seconds(elapsed).format('HH:mm:ss'))
     window.timer = setInterval(function() {
-      $('.elapsed-time').html(moment().hours(0).minutes(0).seconds(elapsed++).format('HH:mm:ss'))
-    }, 1000)
+      $.ajax({
+        url: "/time_logs/" + $('.elapsed-time').data('id') + "/get_time",
+        type: 'GET',
+        dataType: 'json',
+        success: function(data) {
+          $('.elapsed-time').text(data['display_duration']);
+        }
+      });
+    }, 500)
 
 :plain
   // Alert

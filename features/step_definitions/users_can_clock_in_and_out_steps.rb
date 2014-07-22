@@ -50,10 +50,6 @@ Then(/^the timer should stop running$/) do
   page.should_not have_content 'Running Clock'
 end
 
-Then(/^display how long I was clocked in$/) do
-  page.should have_content @time_log.display_duration
-end
-
 Then(/^I should get a duplicate ID warning$/) do
   page.should have_content 'That ID already exists. Please try a different one.'
 end

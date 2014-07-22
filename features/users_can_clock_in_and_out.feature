@@ -18,7 +18,6 @@ Feature: Users can clock in and out
     And I am logged in as an employee
     When I clock out
     Then the timer should stop running
-    And display how long I was clocked in
 
   @javascript
   Scenario: Employee enters an ID already in use
@@ -39,7 +38,6 @@ Feature: Users can clock in and out
     And I am logged in as an admin
     When I clock out
     Then the timer should stop running
-    And display how long I was clocked in
 
   @javascript
   Scenario: Admin enters an ID already in use

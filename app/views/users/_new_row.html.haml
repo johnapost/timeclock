@@ -1,0 +1,9 @@
+%tr.inserted{class: "user_#{@new_user.id}"}
+  %td= @new_user.id
+  %td= @new_user.display_name
+  %td= @new_user.email
+  %td= @new_user.status
+  %td= total_duration @new_user.time_logs.seven_days
+  %td
+    = link_to 'Delete User', "/users/#{@new_user.id}", remote: true, method: :delete, class: 'btn btn-xs btn-danger', data: {confirm: 'Are you sure?'}
+    = link_to 'Report', "/pdf/#{@new_user.id}.pdf", target: '_blank', class: 'btn btn-xs btn-info left-4px'

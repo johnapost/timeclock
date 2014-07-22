@@ -21,11 +21,16 @@
 
     if ($('.clock_out:visible').length > 0) {
       clearInterval(window.timer)
-      window.elapsed = $('.elapsed-time').data('elapsed')
-      $('.elapsed-time').html(moment().hours(0).minutes(0).seconds(elapsed).format('HH:mm:ss'))
       window.timer = setInterval(function() {
-        $('.elapsed-time').html(moment().hours(0).minutes(0).seconds(elapsed++).format('HH:mm:ss'))
-      }, 1000)
+        $.ajax({
+          url: "/time_logs/" + $('.elapsed-time').data('id') + "/get_time",
+          type: 'GET',
+          dataType: 'json',
+          success: function(data) {
+            $('.elapsed-time').text(data['display_duration']);
+          }
+        });
+      }, 500)
     }
   };
 
