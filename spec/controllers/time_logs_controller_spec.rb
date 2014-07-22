@@ -46,5 +46,13 @@ RSpec.describe TimeLogsController, type: :controller do
         end
       end
     end
+
+    describe "GET 'get_time'" do
+      it "returns the time log's duration" do
+        @time_log = FactoryGirl.create :active_time_log, user: @user
+        xhr :get, :get_time, {id: @time_log.id}
+        expect(response.body).to include @time_log.display_duration
+      end
+    end
   end
 end
