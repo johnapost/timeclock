@@ -29,6 +29,12 @@ class TimeLogsController < ApplicationController
     end
   end
 
+  def get_time
+    @time_log = TimeLog.find params[:id]
+
+    render json: @time_log.to_json(methods: :display_duration)
+  end
+
   private
     def time_log_params
       params.require(:time_log).permit(:id, :user_id)

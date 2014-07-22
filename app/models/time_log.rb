@@ -20,7 +20,11 @@ class TimeLog < ActiveRecord::Base
   validate :user_exists
 
   def duration
-    self.clock_out.to_i - self.clock_in.to_i if self.clock_out && self.clock_in
+    if self.clock_out && self.clock_in
+      self.clock_out.to_i - self.clock_in.to_i
+    elsif self.clock_in
+      Time.now.to_i - self.clock_in.to_i
+    end
   end
 
   def display_duration
